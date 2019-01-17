@@ -1,17 +1,9 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Oct 28 09:59:42 2018
-
-@author: monik
-"""
-
 import pandas as pd
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import statsmodels.api as sm
-from sklearn.metrics import mean_squared_error
+from sklearn import metrics
 import math
-from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import LinearRegression
 import numpy as np
 import seaborn as sns
 # Imported all the required modules
@@ -69,6 +61,6 @@ X_test = data_test.values
 model = LinearRegression()
 model.fit(X_train, Y_train)
 Y_hypo = model.predict(X_test)
-print("RMSE : %s" % str(math.sqrt(mean_squared_error(Y_hypo, Y_test))))
+print("RMSE : %s" % str(math.sqrt(metrics.mean_squared_error(Y_hypo, Y_test))))
 plt.plot([1,2,3,4,5,6,7], Y_test, 'r-')
 plt.plot([1,2,3,4,5,6,7], Y_hypo, 'b-')
